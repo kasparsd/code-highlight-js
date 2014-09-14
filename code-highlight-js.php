@@ -16,7 +16,7 @@ CodeHighlightJs::instance();
 class CodeHighlightJs {
 
 	
-	public function instance() {
+	static function instance() {
 
 		static $instance;
 
@@ -41,7 +41,7 @@ class CodeHighlightJs {
 
 		$highlight_css = apply_filters( 
 				'highlight-js-style-uri', 
-				plugins_url( '/styles/default.css', __FILE__ ),
+				plugins_url( '/styles/default.css', __FILE__ )
 			);
 
 		wp_enqueue_style( 
@@ -51,26 +51,13 @@ class CodeHighlightJs {
 			'8.2'
 		);
 
-		wp_register_script( 
+		wp_enqueue_script( 
 			'highligh-js', 
 			plugins_url( '/js/highlight.min.js', __FILE__ ),
-			false,
+			null,
 			'8.2', 
 			true
 		);
-
-		$init_script = apply_filters(
-				'highlight-js-init',
-				'hljs.initHighlightingOnLoad();'
-			);
-
-		$wp_scripts->add_data( 
-				'highligh-js', 
-				'data', 
-				 $init_script
-			);
-
-		wp_enqueue_script( 'highligh-js' );
 
 	}
 
