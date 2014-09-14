@@ -39,12 +39,14 @@ class CodeHighlightJs {
 		
 		global $wp_scripts;
 
+		$highlight_css = apply_filters( 
+				'highlight-js-style-uri', 
+				plugins_url( '/styles/default.css', __FILE__ ),
+			);
+
 		wp_enqueue_style( 
 			'highligh-js-style', 
-			apply_filters( 
-				'highlight-js-style-uri', 
-				plugins_url( '/styles/default.min.css', __FILE__ ) 
-			), 
+			$highlight_css,
 			array(), 
 			'8.2'
 		);
@@ -57,10 +59,15 @@ class CodeHighlightJs {
 			true
 		);
 
+		$init_script = apply_filters(
+				'highlight-js-init',
+				'hljs.initHighlightingOnLoad();'
+			);
+
 		$wp_scripts->add_data( 
 				'highligh-js', 
 				'data', 
-				'hljs.initHighlightingOnLoad();' 
+				 $init_script
 			);
 
 		wp_enqueue_script( 'highligh-js' );
@@ -69,5 +76,4 @@ class CodeHighlightJs {
 
 
 }
-
 
