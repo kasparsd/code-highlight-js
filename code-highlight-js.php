@@ -4,7 +4,7 @@
 	Plugin URI: https://github.com/kasparsd/code-highlight-js
 	GitHub URI: https://github.com/kasparsd/code-highlight-js
 	Description: Automatic code syntax highlighting using the Highlight.js library.
-	Version: 0.1
+	Version: 0.2
 	Author: Kaspars Dambis
 	Author URI: http://kaspars.net
 */
