@@ -4,7 +4,7 @@
 	Plugin URI: https://github.com/kasparsd/code-highlight-js
 	GitHub URI: https://github.com/kasparsd/code-highlight-js
 	Description: Automatic code syntax highlighting using the Highlight.js library.
-	Version: 0.2
+	Version: 1.0
 	Author: Kaspars Dambis
 	Author URI: http://kaspars.net
 */
@@ -37,25 +37,18 @@ class CodeHighlightJs {
 
 	function add_scripts() {
 		
-		global $wp_scripts;
-
-		$highlight_css = apply_filters( 
-				'highlight-js-style-uri', 
-				plugins_url( '/styles/default.css', __FILE__ )
-			);
-
 		wp_enqueue_style( 
 			'highligh-js-style', 
-			$highlight_css,
-			array(), 
-			'8.2'
+			apply_filters( 'highlight-js-style-uri', plugins_url( '/styles/default.css', __FILE__ ) ),
+			null, 
+			'8.4-default'
 		);
 
 		wp_enqueue_script( 
 			'highligh-js', 
 			plugins_url( '/js/highlight.min.js', __FILE__ ),
 			null,
-			'8.2', 
+			'8.4', 
 			true
 		);
 
