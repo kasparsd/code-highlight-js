@@ -41,20 +41,22 @@ class CodeHighlightJs {
 		
 		global $wp_scripts;
 
+		$ver = '8.4';
+		
 		$highlight_stylesheet = get_option( 'highlight-js-style', 'default.css' );
 
 		wp_enqueue_style( 
 			'highligh-js-style', 
 			apply_filters( 'highlight-js-style-uri', plugins_url( '/styles/' . $highlight_stylesheet, __FILE__ ) ),
 			null, 
-			'8.4-default'
+			$ver
 		);
 
 		wp_enqueue_script( 
 			'highligh-js', 
 			plugins_url( '/js/highlight.min.js', __FILE__ ),
 			null,
-			'8.4', 
+			$ver, 
 			true
 		);
 
